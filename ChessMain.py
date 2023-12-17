@@ -17,7 +17,6 @@ def loadImages():
     for piece in  pieces:
         IMAGES[piece] = p.transform.scale( p.image.load("images/" + piece + ".png"),(SQ_SIZE, SQ_SIZE))
 
-
 def main():
     p.init()
     screen = p.display.set_mode((WIDTH, HEIGHT))
@@ -83,7 +82,7 @@ def main():
         
         #Ai move finder
         if not gameOver and not humanTurn:
-            AIMove = ChessAI.findBestMoveMinMax(gs, validMoves)
+            AIMove = ChessAI.findBestMove(gs, validMoves)
             if AIMove is None:
                 AIMove = ChessAI.findRandomMove(validMoves)
             gs.makeMove(AIMove)
