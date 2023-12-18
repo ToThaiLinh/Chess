@@ -25,7 +25,6 @@ def main():
     p.display.set_caption("Chess")
     clock = p.time.Clock()
     screen.fill(p.Color("white"))
-    moveLogFont = p.font.SysFont("Helvitca", 12, False, False)
 
     gs = ChessEngine.GameState()
     validMoves = gs.getValidMoves()
@@ -101,7 +100,7 @@ def main():
             moveMade = False 
             animate = False
 
-        drawGameState(screen, gs, validMoves, sqSelected, moveLogFont)  
+        drawGameState(screen, gs, validMoves, sqSelected)  
 
         if gs.checkMate or gs.staleMate:
             gameOver = True
@@ -118,11 +117,10 @@ def main():
         clock.tick(MAX_FPS)
         p.display.flip()
 
-def drawGameState(screen, gs, validMoves, sqSelected, moveLogFont):
+def drawGameState(screen, gs, validMoves, sqSelected):
     drawBoard(screen)
     highlightSquare(screen, gs, validMoves, sqSelected)
     drawPieces(screen, gs.board)
-    #drawMoveLog(screen, gs, moveLogFont)
 
 def drawBoard(screen):
     global colors
